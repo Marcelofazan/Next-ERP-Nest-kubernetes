@@ -10,7 +10,7 @@ Modifique alterando **DB_TYPE** para trocar de banco de dados em **.env** .
 # DB_TYPE=postgres  ← omitir para usar SQLite
 ```
 
-#### ⚙️ Executar a aplicação Kubernetes
+#### 🔄 Executar a aplicação Kubernetes
 - Passo 1 - Gerar imagens do contanier Docker primeiro do Backend e Frontend e deixa-lás sem uso com o comando **docker compose down**.
 - Passo 2 - Fazer download do **kind** e renomear o executável para kind e colocar na pasta "C:\Windows\System32"
 
