@@ -39,7 +39,7 @@ docker compose down
 
 #### 🔄 Executar a aplicação Kubernetes
 - Passo 1 - Gerar imagens do contanier Docker primeiro do Backend e Frontend e deixa-lás sem uso com o comando **docker compose down**.
-- Passo 2 - Fazer download do **kind** e renomear o executável para kind e colocar na pasta "C:\Windows\System32"
+- Passo 2 - Fazer download do **kind** e renomear o executável para **kind** e colocar na pasta "C:\Windows\System32"
 
 ```text
 curl.exe -Lo kind-windows-amd64.exe https://kind.sigs.k8s.io/dl/v0.32.0/kind-windows-amd64
