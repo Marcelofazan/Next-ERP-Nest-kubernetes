@@ -9,8 +9,8 @@ Modifique alterando **DB_TYPE** para trocar de banco de dados em **.env** , vazi
 ```bash
 DB_TYPE=postgres  
 ```
-- **SQLite** é o motor padrão quando `DB_TYPE` não está definido.  
-- **PostgreSQL** é ativado com `DB_TYPE=postgres` e as variáveis de conexão correspondentes.
+- **SQLite** é o motor padrão quando **DB_TYPE** não está definido.  
+- **PostgreSQL** é ativado com **DB_TYPE=postgres** e as variáveis de conexão correspondentes.
 
 
 #### 🔄 Executar a aplicação Docker
