@@ -77,7 +77,7 @@ kubectl exec -it $POD_NAME -- node dist/src/database/seed-admin.js
   ⚠  Altere a senha no primeiro login.
 ```
 
-- Passo 6 - Rodar script Kubernetes, aguarde atualizar a aba Kubernates no Docker
+- Passo 6 - Rodar script Kubernetes, aguarde atualizar o painel Kubernetes no Docker
 ```bash
 cd k8s
 kubectl apply -f deployment.yaml
