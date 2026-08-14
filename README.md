@@ -214,8 +214,6 @@ docker build -t erp-backend .
 kind load docker-image erp-backend --name desktop
 kubectl rollout restart deployment erp-backend
 ```
-
-
 -  Criar, Consultar e Deletar o serviço existente
 ```bash
 kubectl expose deployment erp-backend --type=ClusterIP --name=erp-backend-service --port=3002 --target-port=3002
