@@ -97,6 +97,14 @@ kubectl port-forward svc/erp-frontend-service 3000:80
 kubectl get svc --all-namespaces
 ```
 
+| NAME | TYPE | PORT(S) | 
+|-----------|-----------|-----------|
+| backend  | ClusterIP | 3002/TCP |               
+| db-service |  ClusterIP | 5432/TCP |              
+| erp-frontend-service | ClusterIP | 80/TCP |                 
+| kubernetes  | ClusterIP | 443/TCP |               
+
+
 #### 🔄 Executar a aplicação Desenvolvimento Local
 #### 📁 Backend
 
