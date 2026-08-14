@@ -215,11 +215,6 @@ kind load docker-image erp-backend --name desktop
 kubectl rollout restart deployment erp-backend
 ```
 
-- Deployment cria, deleta e reinicia os Pods sempre que necessário
-```bash
-kubectl port-forward deployment/erp-backend 3002:3002
-kubectl port-forward deployment/erp-frontend 3000:3000
-```
 
 -  Criar, Consultar e Deletar o serviço existente
 ```bash
