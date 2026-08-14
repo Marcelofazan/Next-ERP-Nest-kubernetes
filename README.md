@@ -188,3 +188,16 @@ kubectl get svc
 ```bash
 kubectl rollout restart deployment erp-backend
 ```
+
+- Descobrir a porta correta do Serviço
+```bash
+kubectl get svc erp-frontend-service
+```
+
+- Atualizar projeto Backend no Kubernets
+```bash 
+cd backend
+docker build -t erp-backend .
+kind load docker-image erp-backend --name desktop
+kubectl rollout restart deployment erp-backend
+```
