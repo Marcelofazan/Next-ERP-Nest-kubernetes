@@ -169,6 +169,11 @@ kubectl get svc --all-namespaces
 | erp-frontend-service | ClusterIP | 80/TCP |                 
 | kubernetes  | ClusterIP | 443/TCP |               
 
+- Status serviços do sistema
+```bash
+kubectl get pods -w
+```
+
 - Caso queira saber qual **Pod** está respondendo as requisições backend 
 ```bash
 kubectl logs -f -l app=erp-backend --max-log-requests=10 --prefix
@@ -177,4 +182,9 @@ kubectl logs -f -l app=erp-backend --max-log-requests=10 --prefix
 - Para saber os Serviços disponíveis
 ```bash
 kubectl get svc
+```
+
+- Reiniciar os Pods do Backend
+```bash
+kubectl rollout restart deployment erp-backend
 ```
