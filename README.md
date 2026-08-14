@@ -108,7 +108,7 @@ kubectl get pods
 
 - Passo 8 - Encaminhar porta **Port Forwarding** do Frontend e Backend
 ```bash
-kubectl port-forward svc/erp-frontend-service 3002:3002
+kubectl port-forward svc/erp-backend-service 3002:3002
 kubectl port-forward svc/erp-frontend-service 3000:80
 ```
 
@@ -217,6 +217,6 @@ cd backend
 docker build -t erp-backend .
 kind load docker-image erp-backend --name desktop
 kubectl rollout restart deployment erp-backend
-kubectl port-forward deployment/erp-backend 3002:3002
-kubectl port-forward deployment/erp-frontend 3000:3000
+kubectl expose deployment erp-backend --type=ClusterIP --name=erp-backend-service --port=3002 --target-port=3002
 ```
+
