@@ -168,7 +168,7 @@ INSERT INTO roles (name) VALUES ('admin'), ('employee');
 ```
 
 
-#### ⚙️ Configuração Servidor Kubernetes 
+#### ⚙️ Configurações Servidor Kubernetes 
 
 - Caso precise consultar os namespaces criados automáticos
 ```bash
@@ -220,12 +220,10 @@ kubectl rollout restart deployment erp-backend
 kubectl port-forward deployment/erp-backend 3002:3002
 kubectl port-forward deployment/erp-frontend 3000:3000
 ```
-- Criar Serviço Deployment.
+
+-  Criar, Consultar e Deletar o serviço existente
 ```bash
 kubectl expose deployment erp-backend --type=ClusterIP --name=erp-backend-service --port=3002 --target-port=3002
-```
-Consultar e Deletar o serviço existente
-```bash
 kubectl get service erp-backend-service
 kubectl delete service erp-backend-service
 ```
