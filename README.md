@@ -92,7 +92,7 @@ kubectl get pods
 ```bash
 kubectl port-forward svc/erp-frontend-service 3000:80
 ```
-- Passo 9 - Caso precise consultar os namespaces criados automáticos
+- Caso precise consultar os namespaces criados automáticos
 ```bash
 kubectl get svc --all-namespaces
 ```
