@@ -106,9 +106,13 @@ kubectl exec -it $POD_NAME -- node dist/src/database/seed-admin.js
 kubectl get pods
 ```
 
-- Passo 8 - Encaminhar porta **Port Forwarding** do Frontend e Backend
+- Passo 8 - Encaminhar porta **Port Forwarding** do Frontend e Backend (Comando de Inicialização)
+VSCode Terminal [1]
 ```bash
 kubectl port-forward svc/erp-backend-service 3002:3002
+```
+VSCode Terminal [2]
+```bash
 kubectl port-forward svc/erp-frontend-service 3000:80
 ```
 
@@ -217,11 +221,19 @@ cd backend
 docker build -t erp-backend .
 kind load docker-image erp-backend --name desktop
 kubectl rollout restart deployment erp-backend
-kubectl expose deployment erp-backend --type=ClusterIP --name=erp-backend-service --port=3002 --target-port=3002
 ```
 
 - Deployment cria, deleta e reinicia os Pods sempre que necessário
 ```bash
 kubectl port-forward deployment/erp-backend 3002:3002
 kubectl port-forward deployment/erp-frontend 3000:3000
+```
+- Criar Serviço Deployment.
+```bash
+kubectl expose deployment erp-backend --type=ClusterIP --name=erp-backend-service --port=3002 --target-port=3002
+```
+Consultar e Deletar o serviço existente
+```bash
+kubectl get service erp-backend-service
+kubectl delete service erp-backend-service
 ```
