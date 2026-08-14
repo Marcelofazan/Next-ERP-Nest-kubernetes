@@ -88,7 +88,7 @@ kubectl apply -f deployment.yaml
 kubectl get pods
 ```
 
-- Passo 8 - Encaminhamento de portas **port forwarding** do Backend e Frontend 
+- Passo 8 - Encaminhamento de portas **Port Forwarding** para Backend e Frontend 
 ```bash
 kubectl port-forward svc/erp-backend-service 3002:3002
 kubectl port-forward svc/erp-frontend-service 3000:80
