@@ -17,7 +17,7 @@ Modifique alterando **DB_TYPE** para trocar de banco de dados em **.env** .
 ```text
 curl.exe -Lo kind-windows-amd64.exe https://kind.sigs.k8s.io/dl/v0.32.0/kind-windows-amd64
 ```
-- Passo 3 - Criar Cluster no Kubernets e esperar processa-lo a criação.  
+- Passo 3 - Criar Cluster na interface Docker Kubernets e esperar processa-la a criação.  
 - Passo 4 - Recuperar Secrets do Kubernetes são, por padrão, gravados não-encriptados no sistema de armazenamento de dados utilizado pelo servidor da API
 
 ```bash
