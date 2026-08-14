@@ -220,3 +220,8 @@ kubectl rollout restart deployment erp-backend
 kubectl expose deployment erp-backend --type=ClusterIP --name=erp-backend-service --port=3002 --target-port=3002
 ```
 
+- Deployment cria, deleta e reinicia os Pods sempre que necessário
+```bash
+kubectl port-forward deployment/erp-backend 3002:3002
+kubectl port-forward deployment/erp-frontend 3000:3000
+```
