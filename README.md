@@ -103,10 +103,6 @@ kubectl get pods
 ```bash
 kubectl port-forward svc/erp-frontend-service 3000:80
 ```
-- Caso precise consultar os namespaces criados automáticos
-```bash
-kubectl get svc --all-namespaces
-```
 
 | NAME | TYPE | PORT(S) | 
 |-----------|-----------|-----------|
@@ -115,6 +111,15 @@ kubectl get svc --all-namespaces
 | erp-frontend-service | ClusterIP | 80/TCP |                 
 | kubernetes  | ClusterIP | 443/TCP |               
 
+- Caso precise consultar os namespaces criados automáticos
+```bash
+kubectl get svc --all-namespaces
+```
+
+- Caso queira saber qual **Pod** está respondendo as requisições backend 
+```bash
+kubectl logs -f -l app=erp-backend --max-log-requests=10 --prefix
+```
 
 #### 🔄 Executar a aplicação Desenvolvimento Local
 #### 📁 Backend
