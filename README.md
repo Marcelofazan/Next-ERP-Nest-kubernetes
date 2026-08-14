@@ -48,7 +48,7 @@ docker compose down
 ```text
 curl.exe -Lo kind-windows-amd64.exe https://kind.sigs.k8s.io/dl/v0.32.0/kind-windows-amd64
 ```
-- Passo 3 - Criar Cluster na interface Docker Kubernets e esperar processa-la a criação.  
+- Passo 3 - Criar Cluster na interface Docker Kubernets e esperar processar a criação.  
 - Passo 4 - Executar Secrets no Kubernetes, por padrão são gravados não-encriptados no sistema de armazenamento, para serem utilizados pelo servidor da API
 
 ```bash
