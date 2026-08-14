@@ -9,6 +9,8 @@ Modifique alterando **DB_TYPE** para trocar de banco de dados em **.env** , vazi
 ```bash
 DB_TYPE=postgres  
 ```
+- **SQLite** é o motor padrão quando `DB_TYPE` não está definido.  
+- **PostgreSQL** é ativado com `DB_TYPE=postgres` e as variáveis de conexão correspondentes.
 
 #### 🔄 Executar a aplicação Kubernetes
 - Passo 1 - Gerar imagens do contanier Docker primeiro do Backend e Frontend e deixa-lás sem uso com o comando **docker compose down**.
@@ -130,8 +132,6 @@ SELECT * FROM users;
 | Frontend | Next.js + Tailwind | Next.js |
 | Infraestrutura | npm run dev | Docker Compose / Kubernetes |
 
-- **SQLite** é o motor padrão quando `DB_TYPE` não está definido.  
-- **PostgreSQL** é ativado com `DB_TYPE=postgres` e as variáveis de conexão correspondentes.
 
 #### Perfis de Acesso (Roles)
 Os perfis de acesso são armazenados na tabela `roles`. Os nomes de perfis que o sistema reconhece são:
