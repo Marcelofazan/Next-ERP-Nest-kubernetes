@@ -19,7 +19,7 @@ VSCode Terminal [1]
 ```bash
 docker-compose up --build
 ```
-
+VSCode Terminal [2]
 - Criar Seed
 ```bash
 docker compose exec backend node dist/src/database/seed-admin.js
