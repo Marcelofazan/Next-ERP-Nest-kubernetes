@@ -153,7 +153,7 @@ Para criar o perfil `admin` inicial, insira diretamente no banco de dados:
 INSERT INTO roles (name) VALUES ('admin'), ('employee');
 ```
 
-## API Principal
+#### API Principal
 
 | Método | Rota | Auth necessária | Perfil mínimo |
 |--------|------|-----------------|---------------|
