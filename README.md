@@ -24,7 +24,7 @@ docker-compose up --build
 ```bash
 docker compose exec backend node dist/src/database/seed-admin.js
 ```
-
+- Ira aparecer a seguinte mensagem de criação 
 ```text
 ✓ Roles criados: admin, employee
 ✓ Admin criado: admin@erp.local / Admin12345!
@@ -38,21 +38,21 @@ docker compose down
 ```
 
 #### 🔄 Executar a aplicação Kubernetes
-- Passo 1 - Gerar imagens do contanier Docker primeiro do Backend e Frontend e deixa-lás sem uso com o comando **docker compose down**.
+- Passo 1 - Necessário Gerar as imagens **Backend/Frontend** do contanier Docker primeiro do Backend e Frontend e deixa-lás sem uso com o comando **docker compose down**.
 - Passo 2 - Fazer download do **kind** e renomear o executável para **kind** e colocar na pasta "C:\Windows\System32"
 
 ```text
 curl.exe -Lo kind-windows-amd64.exe https://kind.sigs.k8s.io/dl/v0.32.0/kind-windows-amd64
 ```
 - Passo 3 - Criar Cluster na interface Docker Kubernets e esperar processa-la a criação.  
-- Passo 4 - Recuperar Secrets do Kubernetes são, por padrão, gravados não-encriptados no sistema de armazenamento de dados utilizado pelo servidor da API
+- Passo 4 - Executar Secrets no Kubernetes, por padrão são gravados não-encriptados no sistema de armazenamento, para serem utilizados pelo servidor da API
 
 ```bash
 kubectl create secret generic erp-db-secret --from-literal=host=localhost --from-literal=username=erp_user --from-literal=password=erp_pass --from-literal=database=erp_db
 kubectl create secret generic erp-jwt-secret --from-literal=secret=uma_chave_super_secreta_e_longa_com_mais_de_32_caracteres_123!
 ```
 
-- Passo 5 - Executar bloco da criação de Seed no editor PowerShell ISE 
+- Passo 5 - Executar bloco da criação de Seed **Postgres** no editor PowerShell ISE 
 ```bash
 # 1. Reinicia o backend para restabelecer a conexão limpa com o novo banco
 kubectl rollout restart deployment erp-backend
@@ -66,7 +66,7 @@ $POD_NAME = (kubectl get pods -l app=erp-backend -o jsonpath='{.items[0].metadat
 # 4. Dispara o seed de criação do administrador
 kubectl exec -it $POD_NAME -- node dist/src/database/seed-admin.js
 ```
-
+- Ira aparecer a seguinte mensagem de criação 
 ```text
 ✓ Roles criados: admin, employee
 ✓ Admin criado: admin@erp.local / Admin12345!
