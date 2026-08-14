@@ -10,7 +10,6 @@ Modifique alterando **DB_TYPE** para trocar de banco de dados em **.env** .
 # DB_TYPE=postgres  ← omitir para usar SQLite
 ```
 
-
 #### ⚙️ Executar a aplicação Kubernetes
 - Passo 1 - Gerar imagens do contanier Docker primeiro do Backend e Frontend e deixa-lás sem uso com o comando **docker compose down**.
 - Passo 2 - Fazer download do **kind** e renomear o executável para kind e colocar na pasta "C:\Windows\System32"
@@ -53,12 +52,12 @@ cd k8s
 kubectl apply -f deployment.yaml
 ```
 
-- Passo 4 - Verifique se todos os Pods estão no status 'Running'
+- Passo 7 - Verifique se todos os Pods estão no status 'Running'
 ```bash
 kubectl get pods
 ```
 
-- Passo 7 - Encaminhamento de portas **port forwarding** do Backend e Frontend 
+- Passo 8 - Encaminhamento de portas **port forwarding** do Backend e Frontend 
 ```bash
 kubectl port-forward svc/erp-backend-service 3002:3002
 kubectl port-forward svc/erp-frontend-service 3000:80
