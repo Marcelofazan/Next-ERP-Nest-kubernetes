@@ -129,11 +129,11 @@ Os perfis de acesso são armazenados na tabela `roles`. Os nomes de perfis que o
 
 | Nome | Acesso |
 |------|--------|
-| `admin` | Leitura e escrita em todos os módulos |
-| `employee` | Leitura em todos os módulos; criar e atualizar pedidos |
+| **admin** | Leitura e escrita em todos os módulos |
+| **employee** | Leitura em todos os módulos; criar e atualizar pedidos |
 | (sem perfil) | Apenas leitura |
 
 Para criar o perfil `admin` inicial, insira diretamente no banco de dados:
-```sql
+```bash
 INSERT INTO roles (name) VALUES ('admin'), ('employee');
 ```
