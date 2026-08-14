@@ -1,0 +1,23 @@
+# Secretos y variables de entorno — NUNCA en el repositorio
+.env
+.env.*
+!.env.example
+
+# Dependencias
+node_modules/
+
+# Builds
+dist/
+.next/
+build/
+
+# DB de desarrollo
+*.db
+*.sqlite
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

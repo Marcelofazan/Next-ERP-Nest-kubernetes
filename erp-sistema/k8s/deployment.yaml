@@ -1,0 +1,192 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: erp-db-secret
+type: Opaque
+stringData:
+  host: db-service       
+  username: erp_user
+  password: erp_pass
+  database: erp_db
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: erp-jwt-secret
+type: Opaque
+stringData:
+  secret: change_me_in_production_secret_32_chars
+  expires: 8h
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: erp-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: erp-backend
+  template:
+    metadata:
+      labels:
+        app: erp-backend
+    spec:
+      containers:
+      - name: erp-backend
+        image: erp-backend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3002
+        env:
+        - name: PORT
+          value: "3002"
+        - name: DB_TYPE
+          value: "postgres"
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: erp-db-secret
+              key: host
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: erp-db-secret
+              key: username
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: erp-db-secret
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: erp-db-secret
+              key: password
+        - name: DB_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: erp-db-secret
+              key: database
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: erp-db-secret
+              key: database
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: erp-jwt-secret
+              key: secret
+        - name: JWT_EXPIRES_IN
+          valueFrom:
+            secretKeyRef:
+              name: erp-jwt-secret
+              key: expires
+        - name: FRONTEND_URL
+          value: "http://localhost:3000" # Ajustado para a porta padrão do port-forward local
+---
+# CORRIGIDO: Nome alterado para "backend" para bater com o Proxy do Next.js
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend 
+spec:
+  selector:
+    app: erp-backend
+  ports:
+    - protocol: TCP
+      port: 3002
+      targetPort: 3002
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service 
+spec:
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: erp-db
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: erp-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: erp-db
+  template:
+    metadata:
+      labels:
+        app: erp-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15-alpine
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: erp-db-secret
+                  key: database
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: erp-db-secret
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: erp-db-secret
+                  key: password
+          ports:
+            - containerPort: 5432
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: erp-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: erp-frontend
+  template:
+    metadata:
+      labels:
+        app: erp-frontend
+    spec:
+      containers:
+      - name: erp-frontend
+        image: erp-sistema-frontend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NEXT_PUBLIC_API_URL
+          value: "http://localhost:3002"
+        # CORRIGIDO: Agora aponta exatamente para o nome DNS correto que o Next.js procurava nos logs
+        - name: BACKEND_INTERNAL_URL
+          value: "http://backend:3002"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: erp-frontend-service
+spec:
+  selector:
+    app: erp-frontend
+  ports:
+    - protocol: TCP
+      port: 80         
+      targetPort: 3000 
+  type: ClusterIP
