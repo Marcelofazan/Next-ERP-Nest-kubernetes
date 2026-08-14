@@ -107,9 +107,10 @@ kubectl get pods
 ```
 
 - Passo 8 - Encaminhar porta **Port Forwarding** do Frontend e Backend (Comando de Inicialização)
+
 VSCode Terminal [1]
 ```bash
-kubectl port-forward svc/erp-backend-service 3002:3002
+kubectl port-forward svc/backend 3002:3002            
 ```
 VSCode Terminal [2]
 ```bash
