@@ -1,6 +1,17 @@
 ## 🌐 Next-Nest-ERP-kubernetes
 Exemplo de projeto ERP com Arquitetura em Camadas em Next 16 e API Nest com autenticação Jwt e banco de dados SQLite e Postgres. 
 
+#### 📋 O que voçê vai ver nesse Projeto
+| Tecnologia | Descrição |
+|-----------|-----------|
+| **BCrypt**  |	Algoritmo de hashing criptográfico utilizado para armazenar senhas de forma segura. |
+| **Core** | Atribuições, responsabilidades e capacidades técnicas que este módulo central possui dentro da arquitetura da aplicação. |
+| **DI** |  Injeção de Depedência, técnica de programação onde um objeto recebe seus recursos necessários (dependências) de fora, em vez de criá-los por conta própria. |
+| **JWT**  | É um crachá digital usado para identificar usuários e trocar informações de forma segura entre computadores. |
+| **LocalStorage**  | Armazenamento em cache de dados no navegador de forma persistente em pares de chave e valor.  |
+| **TypeORM**  | Ferramenta de mapeamento objeto-relacional (ORM) para Node.js escrita em TypeScript. |
+| **Promise**  | Gerencia de resultado de uma operação assíncrona |
+
 #### 💬 Requisitos do Projeto
 - Necessário **Docker** instalado.
 - Necessário configurar arquivo **.env**
