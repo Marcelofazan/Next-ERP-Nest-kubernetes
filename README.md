@@ -124,15 +124,6 @@ docker exec -it erp-sistema-db-1 psql -U erp_user -d erp_db
 SELECT * FROM users;
 ```
 
-#### Arquitetura
-
-| Camada | Dev local | Docker / Produção |
-|--------|-----------|-------------------|
-| Backend | NestJS + SQLite | NestJS + PostgreSQL |
-| Frontend | Next.js + Tailwind | Next.js |
-| Infraestrutura | npm run dev | Docker Compose / Kubernetes |
-
-
 #### Perfis de Acesso (Roles)
 Os perfis de acesso são armazenados na tabela `roles`. Os nomes de perfis que o sistema reconhece são:
 
