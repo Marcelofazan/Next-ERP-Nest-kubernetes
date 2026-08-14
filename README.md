@@ -174,3 +174,7 @@ kubectl get svc --all-namespaces
 kubectl logs -f -l app=erp-backend --max-log-requests=10 --prefix
 ```
 
+- Para saber os Serviços disponíveis
+```bash
+kubectl get svc
+```
