@@ -133,12 +133,10 @@ SELECT * FROM users;
 | Frontend | Next.js + Tailwind | Next.js |
 | Infraestrutura | npm run dev | Docker Compose / Kubernetes |
 
-> **SQLite** é o motor padrão quando `DB_TYPE` não está definido.  
-> **PostgreSQL** é ativado com `DB_TYPE=postgres` e as variáveis de conexão correspondentes.
-
+- **SQLite** é o motor padrão quando `DB_TYPE` não está definido.  
+- **PostgreSQL** é ativado com `DB_TYPE=postgres` e as variáveis de conexão correspondentes.
 
 #### Perfis de Acesso (Roles)
-
 Os perfis de acesso são armazenados na tabela `roles`. Os nomes de perfis que o sistema reconhece são:
 
 | Nome | Acesso |
@@ -151,22 +149,3 @@ Para criar o perfil `admin` inicial, insira diretamente no banco de dados:
 ```sql
 INSERT INTO roles (name) VALUES ('admin'), ('employee');
 ```
-
-#### API Principal
-
-| Método | Rota | Auth necessária | Perfil mínimo |
-|--------|------|-----------------|---------------|
-| POST | /auth/register | Não | — |
-| POST | /auth/login | Não | — |
-| GET | /users | Sim | qualquer um |
-| GET | /users/roles | Sim | qualquer um |
-| POST/PUT/DELETE | /users | Sim | admin |
-| GET | /products | Sim | qualquer um |
-| POST/PUT/DELETE | /products | Sim | admin |
-| GET | /inventory | Sim | qualquer um |
-| POST/PUT/DELETE | /inventory | Sim | admin |
-| GET | /orders | Sim | qualquer um |
-| POST/PUT | /orders | Sim | admin, employee |
-| DELETE | /orders/:id | Sim | admin |
-| GET | /employees | Sim | qualquer um |
-| POST/PUT/DELETE | /employees | Sim | admin |
