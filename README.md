@@ -99,7 +99,7 @@ kubectl exec -it $POD_NAME -- node dist/src/database/seed-admin.js
 kubectl get pods
 ```
 
-- Passo 8 - Encaminhamento de portas **Port Forwarding** Frontend 
+- Passo 8 - Encaminhar porta **Port Forwarding** do Frontend 
 ```bash
 kubectl port-forward svc/erp-frontend-service 3000:80
 ```
