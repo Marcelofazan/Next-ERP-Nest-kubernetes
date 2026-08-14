@@ -115,7 +115,7 @@ npm run dev
 cd backend
 npm test           # testes unitários
 npm run test:e2e   # e2e com SQLite em memória
-
+```
 
 #### 🔍 Docker no Postgres
 ```bash
