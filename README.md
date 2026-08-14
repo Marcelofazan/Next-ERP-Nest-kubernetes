@@ -56,7 +56,7 @@ kubectl create secret generic erp-db-secret --from-literal=host=localhost --from
 kubectl create secret generic erp-jwt-secret --from-literal=secret=uma_chave_super_secreta_e_longa_com_mais_de_32_caracteres_123!
 ```
 
-- Passo 5 - Executar bloco da criação de Seed **Postgres** no editor PowerShell ISE 
+- Passo 5 - Executar bloco da criação de Seed **Postgres** no editor PowerShell ISE, espere o status do backend ficar **Available**
 ```bash
 # 1. Reinicia o backend para restabelecer a conexão limpa com o novo banco
 kubectl rollout restart deployment erp-backend
