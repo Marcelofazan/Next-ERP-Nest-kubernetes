@@ -104,22 +104,9 @@ kubectl get pods
 kubectl port-forward svc/erp-frontend-service 3000:80
 ```
 
-| NAME | TYPE | PORT(S) | 
-|-----------|-----------|-----------|
-| backend  | ClusterIP | 3002/TCP |               
-| db-service |  ClusterIP | 5432/TCP |              
-| erp-frontend-service | ClusterIP | 80/TCP |                 
-| kubernetes  | ClusterIP | 443/TCP |               
+- Verificar Health API **http://localhost:3002/api/health**
+- Iniciar a aplicação em **http://localhost:3000/**
 
-- Caso precise consultar os namespaces criados automáticos
-```bash
-kubectl get svc --all-namespaces
-```
-
-- Caso queira saber qual **Pod** está respondendo as requisições backend 
-```bash
-kubectl logs -f -l app=erp-backend --max-log-requests=10 --prefix
-```
 
 #### 🔄 Executar a aplicação Desenvolvimento Local
 #### 📁 Backend
@@ -138,9 +125,6 @@ cd frontend
 npm install 
 npm run dev
 ```
-
-- Verificar Health API **http://localhost:3002/api/health**
-- Iniciar a aplicação em **http://localhost:3000/**
 
 #### 🧪 Testes Unitários
 ```bash
@@ -169,3 +153,24 @@ Para criar o perfil `admin` inicial, insira diretamente no banco de dados:
 ```bash
 INSERT INTO roles (name) VALUES ('admin'), ('employee');
 ```
+
+
+#### ⚙️ Configuração Servidor Kubernetes 
+
+- Caso precise consultar os namespaces criados automáticos
+```bash
+kubectl get svc --all-namespaces
+```
+
+| NAME | TYPE | PORT(S) | 
+|-----------|-----------|-----------|
+| backend  | ClusterIP | 3002/TCP |               
+| db-service |  ClusterIP | 5432/TCP |              
+| erp-frontend-service | ClusterIP | 80/TCP |                 
+| kubernetes  | ClusterIP | 443/TCP |               
+
+- Caso queira saber qual **Pod** está respondendo as requisições backend 
+```bash
+kubectl logs -f -l app=erp-backend --max-log-requests=10 --prefix
+```
+
