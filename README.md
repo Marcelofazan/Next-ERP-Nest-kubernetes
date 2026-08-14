@@ -1,5 +1,5 @@
 ## 🌐 Next-Nest-ERP-kubernetes
-Exemplo de projeto ERP em Next 16 e API Nest com autenticação Jwt e banco de dados SQLite e Postgres. 
+Exemplo de projeto ERP com Arquitetura em Camadas em Next 16 e API Nest com autenticação Jwt e banco de dados SQLite e Postgres. 
 
 #### 💬 Requisitos do Projeto
 - Necessário **Docker** instalado.
