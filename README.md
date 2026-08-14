@@ -48,6 +48,13 @@ VSCode Terminal [2]
 docker compose down 
 ```
 
+#### 🔍 Docker no Postgres
+```bash
+docker exec -it erp-sistema-db-1 psql -U erp_user -d erp_db
+\dt
+SELECT * FROM users;
+```
+
 #### 🔄 Executar a aplicação Kubernetes
 - Passo 1 - Necessário Gerar as imagens **Backend/Frontend** do contanier Docker primeiro e deixa-lás **STOP**
 ```bash
@@ -106,6 +113,15 @@ kubectl port-forward svc/erp-frontend-service 3000:80
 
 - Verificar Health API **http://localhost:3002/api/health**
 - Iniciar a aplicação em **http://localhost:3000/**
+
+#### 🔍 Docker no Postgres
+Pesquisar nome do Pod corretamente gerado no Kubernates, alterar o [XXXXXXXXXXXXXXX] pelo valor gerado.
+```bash
+kubectl get pods
+docker exec -it erp-db-[XXXXXXXXXXXXXXX] psql -U erp_user -d erp_db
+\dt
+SELECT * FROM users;
+```
 
 
 #### 🔄 Executar a aplicação Desenvolvimento Local
