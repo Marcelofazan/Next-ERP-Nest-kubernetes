@@ -135,8 +135,17 @@ SELECT * FROM users;
 VSCode Terminal [1]
 ```bash
 cd backend
-npm install 
+npm install
+npm run build
+node dist/src/database/seed-admin.js
 npm run start
+```
+
+- Ira aparecer a seguinte mensagem de criação 
+```text
+✓ Roles criados: admin, employee
+✓ Admin criado: admin@erp.local / Admin12345!
+  ⚠  Altere a senha no primeiro login.
 ```
 
 #### 📁 Frontend 
