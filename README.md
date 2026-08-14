@@ -1,4 +1,4 @@
-## 🌐 Next-ERP-Nest-kubernetes
+## 🌐 Next-ERP-Api-Nest-kubernetes
 Aplicativo ERP em Next 16 e API Nest 11 com autenticação Jwt e banco de dados SQLite e Postgres. 
 
 #### 💬 Requisitos do Projeto
