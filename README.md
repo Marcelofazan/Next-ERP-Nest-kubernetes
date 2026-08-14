@@ -175,13 +175,6 @@ INSERT INTO roles (name) VALUES ('admin'), ('employee');
 kubectl get svc --all-namespaces
 ```
 
-| NAME | TYPE | PORT(S) | 
-|-----------|-----------|-----------|
-| backend  | ClusterIP | 3002/TCP |               
-| db-service |  ClusterIP | 5432/TCP |              
-| erp-frontend-service | ClusterIP | 80/TCP |                 
-| kubernetes  | ClusterIP | 443/TCP |               
-
 - Status serviços do sistema
 ```bash
 kubectl get pods -w
@@ -213,10 +206,4 @@ cd backend
 docker build -t erp-backend .
 kind load docker-image erp-backend --name desktop
 kubectl rollout restart deployment erp-backend
-```
--  Criar, Consultar e Deletar o serviço existente
-```bash
-kubectl expose deployment erp-backend --type=ClusterIP --name=erp-backend-service --port=3002 --target-port=3002
-kubectl get service erp-backend-service
-kubectl delete service erp-backend-service
 ```
