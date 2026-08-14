@@ -129,7 +129,7 @@ docker exec -it erp-db-[XXXXXXXXXXXXXXX] psql -U erp_user -d erp_db
 SELECT * FROM users;
 ```
 
-#### 🔄 Executar a aplicação Desenvolvimento Local
+#### 🔄 Executar a aplicação Desenvolvimento Local (SQLite)
 
 - Necessário alterar propriedades entity do Postgres **Timestamp** para SQLite **Datetime**
 
