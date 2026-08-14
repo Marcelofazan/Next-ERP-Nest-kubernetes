@@ -12,6 +12,31 @@ DB_TYPE=postgres
 - **SQLite** é o motor padrão quando `DB_TYPE` não está definido.  
 - **PostgreSQL** é ativado com `DB_TYPE=postgres` e as variáveis de conexão correspondentes.
 
+
+#### 🔄 Executar a aplicação Docker
+VSCode Terminal [1]
+- Criar Container
+```bash
+docker-compose up --build
+```
+
+- Criar Seed
+```bash
+docker compose exec backend node dist/src/database/seed-admin.js
+```
+
+```text
+✓ Roles criados: admin, employee
+✓ Admin criado: admin@erp.local / Admin12345!
+  ⚠  Altere a senha no primeiro login.
+```
+
+VSCode Terminal [2]
+- Fechar Container
+```bash
+docker compose down 
+```
+
 #### 🔄 Executar a aplicação Kubernetes
 - Passo 1 - Gerar imagens do contanier Docker primeiro do Backend e Frontend e deixa-lás sem uso com o comando **docker compose down**.
 - Passo 2 - Fazer download do **kind** e renomear o executável para kind e colocar na pasta "C:\Windows\System32"
@@ -63,30 +88,6 @@ kubectl get pods
 ```bash
 kubectl port-forward svc/erp-backend-service 3002:3002
 kubectl port-forward svc/erp-frontend-service 3000:80
-```
-
-#### 🔄 Executar a aplicação Docker
-VSCode Terminal [1]
-- Criar Container
-```bash
-docker-compose up --build
-```
-
-- Criar Seed
-```bash
-docker compose exec backend node dist/src/database/seed-admin.js
-```
-
-```text
-✓ Roles criados: admin, employee
-✓ Admin criado: admin@erp.local / Admin12345!
-  ⚠  Altere a senha no primeiro login.
-```
-
-VSCode Terminal [2]
-- Fechar Container
-```bash
-docker compose down 
 ```
 
 #### 🔄 Executar a aplicação Desenvolvimento Local
