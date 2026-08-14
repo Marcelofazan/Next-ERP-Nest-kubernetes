@@ -56,7 +56,13 @@ kubectl create secret generic erp-db-secret --from-literal=host=localhost --from
 kubectl create secret generic erp-jwt-secret --from-literal=secret=uma_chave_super_secreta_e_longa_com_mais_de_32_caracteres_123!
 ```
 
-- Passo 5 - Executar bloco da criação de Seed **Postgres** no editor PowerShell ISE, espere o status do backend ficar **Available**
+- Passo 5 - Rodar script Kubernetes e aguardar atualizar o painel Kubernetes no Docker
+```bash
+cd k8s
+kubectl apply -f deployment.yaml
+```
+
+- Passo 6 - Executar bloco da criação de Seed **Postgres** no editor PowerShell ISE, espere o status do backend ficar **Available**
 ```bash
 # 1. Reinicia o backend para restabelecer a conexão limpa com o novo banco
 kubectl rollout restart deployment erp-backend
@@ -75,12 +81,6 @@ kubectl exec -it $POD_NAME -- node dist/src/database/seed-admin.js
 ✓ Roles criados: admin, employee
 ✓ Admin criado: admin@erp.local / Admin12345!
   ⚠  Altere a senha no primeiro login.
-```
-
-- Passo 6 - Rodar script Kubernetes e aguardar atualizar o painel Kubernetes no Docker
-```bash
-cd k8s
-kubectl apply -f deployment.yaml
 ```
 
 - Passo 7 - Verifique se todos os Pods estão no status 'Running'
