@@ -1,4 +1,4 @@
-## 🌐 Next-ERP-Nest-Kubernetes
+## 🌐 Next-ERP-Nest-kubernetes
 Aplicativo ERP em Next 16 e API Nest 11 com autenticação Jwt e banco de dados SQLite e Postgres. 
 
 #### 💬 Requisitos do Projeto
@@ -87,7 +87,7 @@ VSCode Terminal [2]
 docker compose down 
 ```
 
-#### 🔄 Executar a aplicação Desenvolvimento Local (SQLite)
+#### 🔄 Executar a aplicação Desenvolvimento Local
 #### 📁 Backend
 
 VSCode Terminal [1]
@@ -108,9 +108,7 @@ npm run dev
 - Verificar Health API **http://localhost:3002/api/health**
 - Iniciar a aplicação em **http://localhost:3000/**
 
-
 #### 🧪 Testes Unitários
-
 ```bash
 cd backend
 npm test           # testes unitários
@@ -118,7 +116,6 @@ npm run test:e2e   # e2e com SQLite em memória
 
 
 #### 🔍 Docker no Postgres
-
 ```bash
 docker exec -it erp-sistema-db-1 psql -U erp_user -d erp_db
 \dt
