@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: erp-backend
-        image: erp-backend:latest
+        image: erp-sistema-backend:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3002
