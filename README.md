@@ -48,7 +48,7 @@ VSCode Terminal [2]
 docker compose down 
 ```
 
-#### 🔍 Docker no Postgres
+#### 🔍 Postgres no Docker
 ```bash
 docker exec -it erp-sistema-db-1 psql -U erp_user -d erp_db
 \dt
@@ -119,7 +119,7 @@ kubectl port-forward svc/erp-frontend-service 3000:80
 - Verificar Health API **http://localhost:3002/api/health**
 - Iniciar a aplicação em **http://localhost:3000/**
 
-#### 🔍 Docker no Postgres
+#### 🔍 Postgres no Kubernetes
 Pesquisar nome do Pod corretamente gerado no Kubernates, alterar o [XXXXXXXXXXXXXXX] pelo valor gerado.
 ```bash
 kubectl get pods
