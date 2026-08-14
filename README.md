@@ -90,8 +90,11 @@ kubectl get pods
 
 - Passo 8 - Encaminhamento de portas **Port Forwarding** para Backend e Frontend 
 ```bash
-kubectl port-forward svc/erp-backend-service 3002:3002
 kubectl port-forward svc/erp-frontend-service 3000:80
+```
+- Passo 9 - Caso precise consultar os namespaces criados automáticos
+```bash
+kubectl get svc --all-namespaces
 ```
 
 #### 🔄 Executar a aplicação Desenvolvimento Local
