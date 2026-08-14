@@ -169,7 +169,7 @@ INSERT INTO roles (name) VALUES ('admin'), ('employee');
 ```
 
 
-#### ⚙️ Configurações Servidor Kubernetes 
+#### ⚙️ Comandos Servidor Kubernetes 
 
 - Caso precise consultar os namespaces criados automáticos
 ```bash
