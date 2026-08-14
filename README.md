@@ -211,7 +211,7 @@ kubectl rollout restart deployment erp-backend
 kubectl get svc erp-frontend-service
 ```
 
-- Atualizar projeto Backend no Kubernets
+- Atualizar projeto Backend no Kubernetes
 ```bash 
 cd backend
 docker build -t erp-backend .
