@@ -5,7 +5,7 @@ Exemplo de projeto ERP em Next 16 e API Nest com autenticação Jwt e banco de d
 - Necessário **Docker** instalado.
 - Necessário configurar arquivo **.env**
 
-Modifique alterando **DB_TYPE** para trocar de banco de dados em **.env** , vazio assume **SQLite**.
+Modifique alterando **DB_TYPE** para trocar de banco de dados em **.env** .
 ```bash
 DB_TYPE=postgres  
 ```
