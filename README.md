@@ -106,8 +106,9 @@ kubectl exec -it $POD_NAME -- node dist/src/database/seed-admin.js
 kubectl get pods
 ```
 
-- Passo 8 - Encaminhar porta **Port Forwarding** do Frontend 
+- Passo 8 - Encaminhar porta **Port Forwarding** do Frontend e Backend
 ```bash
+kubectl port-forward svc/erp-frontend-service 3002:3002
 kubectl port-forward svc/erp-frontend-service 3000:80
 ```
 
@@ -216,4 +217,6 @@ cd backend
 docker build -t erp-backend .
 kind load docker-image erp-backend --name desktop
 kubectl rollout restart deployment erp-backend
+kubectl port-forward deployment/erp-backend 3002:3002
+kubectl port-forward deployment/erp-frontend 3000:3000
 ```
