@@ -128,7 +128,6 @@ docker exec -it erp-db-[XXXXXXXXXXXXXXX] psql -U erp_user -d erp_db
 SELECT * FROM users;
 ```
 
-
 #### 🔄 Executar a aplicação Desenvolvimento Local
 #### 📁 Backend
 
@@ -152,13 +151,6 @@ npm run dev
 cd backend
 npm test           # testes unitários
 npm run test:e2e   # e2e com SQLite em memória
-```
-
-#### 🔍 Docker no Postgres
-```bash
-docker exec -it erp-sistema-db-1 psql -U erp_user -d erp_db
-\dt
-SELECT * FROM users;
 ```
 
 #### Perfis de Acesso (Roles)
