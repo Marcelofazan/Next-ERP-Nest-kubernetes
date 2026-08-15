@@ -42,7 +42,7 @@ docker compose exec backend node dist/src/database/seed-admin.js
   ⚠  Altere a senha no primeiro login.
 ```
 
-VSCode Terminal [2]
+VSCode Terminal [3]
 - Fechar Container
 ```bash
 docker compose down 
