@@ -24,7 +24,8 @@ export class Order {
   @Column('decimal', { precision: 10, scale: 2 })
   total: number;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }) //Postgres
+  //@Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' }) //SQLite
   created_at: Date;
 
   @OneToMany(() => OrderItem, (item) => item.order, { cascade: ['remove'] })
