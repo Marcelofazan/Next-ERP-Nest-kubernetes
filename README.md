@@ -133,17 +133,19 @@ SELECT * FROM users;
 ```
 
 #### 🔄 Executar a aplicação Desenvolvimento Local (SQLite)
-
-- Necessário alterar propriedades entity do Postgres **Timestamp** para SQLite **Datetime**
+- Para trocar a plataforma de Docker para Desenvolvimento Local
+- Passo 1: Necessário alterar propriedades entity do Postgres **timestamp** para SQLite **datetime**
+- Passo 2: arquivo **.env** Frontend e Backend , comentando a conexão Postgres.
+- Passo 3: caminho backend arquivo **next.config.ts**
+- Passo 4: pasta **.next** do Frontend e pasta **dist** do Backend para serem recriadas.
 
 #### 📁 Backend
-
 VSCode Terminal [1]
 ```bash
 cd backend
 npm install
 npm run build
-node dist/src/database/seed-admin.js
+npx ts-node src/database/seed-admin.ts
 ```
 
 - Ira aparecer a seguinte mensagem de criação 
