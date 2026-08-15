@@ -153,7 +153,7 @@ node dist/src/database/seed-admin.js
   ⚠  Altere a senha no primeiro login.
 ```
 
-- Para executar a aplicação
+- Para inicializar a API
 ```bash
 npm run start:dev
 ```
