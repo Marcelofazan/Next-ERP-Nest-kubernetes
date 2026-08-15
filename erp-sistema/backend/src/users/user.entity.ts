@@ -32,6 +32,7 @@ export class User {
   @JoinColumn({ name: 'role_id' })
   role: Role;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }) //Postgres
+  //@Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' }) //SQLite
   created_at: Date;
 }
