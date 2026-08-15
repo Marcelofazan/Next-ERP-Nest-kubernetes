@@ -22,13 +22,13 @@ async function seedAdmin() {
           password: process.env.DB_PASSWORD ?? '',
           database: process.env.DB_NAME ?? 'erp_db',
           entities: [join(__dirname, '../**/*.entity.{ts,js}')],
-          synchronize: false,
+          synchronize: true,
         }
       : {
           type: 'sqlite',
           database: process.env.DB_PATH ?? 'erp.db',
           entities: [join(__dirname, '../**/*.entity.{ts,js}')],
-          synchronize: false,
+          synchronize: true,
         },
   );
 
