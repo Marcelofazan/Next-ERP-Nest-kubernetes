@@ -1,8 +1,8 @@
 ## 🌐 Next-Nest-ERP-kubernetes
 Exemplo de projeto ERP com Arquitetura em Camadas em Next 16 e API Nest com autenticação Jwt e banco de dados SQLite e Postgres. 
 
-#### 📋 O que voçê vai ver nesse Projeto
-<img width="1317" height="669" alt="erp" src="https://github.com/user-attachments/assets/97c78d1b-8797-4141-9867-bf1ea28006a2" />
+#### 🎨 Aqui está uma demonstração do projeto
+<img width="800" height="350" alt="erp" src="https://github.com/user-attachments/assets/97c78d1b-8797-4141-9867-bf1ea28006a2" />
 
 #### 📋 O que voçê vai ver nesse Projeto
 | Tecnologia | Descrição |
