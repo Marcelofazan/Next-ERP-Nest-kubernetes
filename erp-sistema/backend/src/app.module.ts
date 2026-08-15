@@ -20,28 +20,19 @@ import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env', '.env.development', '.env.local'],
       validationSchema: Joi.object({
         NODE_ENV: Joi.string()
           .valid('development', 'production', 'test')
           .default('development'),
         PORT: Joi.number().default(3002),
-        JWT_SECRET: Joi.string()
-          .min(32)
-          .default('oCoGb6D/h61CZtttbthij6BtFt15pgeggTphzl6PDtzs5xz2E3daYrucMS9Ag0T4HV4zhbZNj+boFcIV/vXK+Q=='),
+        JWT_SECRET: Joi.string().min(32).required(),
         JWT_EXPIRES_IN: Joi.string().default('8h'),
         FRONTEND_URL: Joi.string().uri().default('http://localhost:3000'),
         ALLOW_PUBLIC_REGISTRATION: Joi.string()
           .valid('true', 'false')
           .default('false'),
-        DB_SYNCHRONIZE: Joi.string().valid('true', 'false').default('true'),
-        DB_TYPE: Joi.string().valid('postgres', 'sqlite').default('postgres'),
-        // ADICIONADO: Validações básicas para evitar strings vazias acidentais no Kubernetes
-        DB_HOST: Joi.string().default('localhost'),
-        DB_PORT: Joi.number().default(5432),
-        DB_USER: Joi.string().default('postgres'),
-        DB_PASSWORD: Joi.string().default('erp_pass'),
-        DB_NAME: Joi.string().default('erp_db'),
+        DB_TYPE: Joi.string().valid('postgres', 'sqlite').default('sqlite'), // CORRIGIDO: Permite validar o tipo de banco
+        DB_SYNCHRONIZE: Joi.string().valid('true', 'false').default('false'),
       }),
       validationOptions: { allowUnknown: true },
     }),
@@ -51,33 +42,30 @@ import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
       useFactory: (config: ConfigService) => {
         const isProduction = config.get<string>('NODE_ENV') === 'production';
         
-        const synchronize = isProduction 
-          ? config.get<string>('DB_SYNCHRONIZE') === 'true'
-          : true;
-
+        // Se for Postgres, respeita as variáveis de ambiente
         if (config.get<string>('DB_TYPE') === 'postgres') {
+          const synchronize = !isProduction && config.get<string>('DB_SYNCHRONIZE') === 'true';
           return {
             type: 'postgres' as const,
-            host: config.get<string>('DB_HOST'),
-            port: config.get<number>('DB_PORT'),
-            username: config.get<string>('DB_USER'),
-            password: config.get<string>('DB_PASSWORD'),
-            database: config.get<string>('DB_NAME'),
+            host: config.get<string>('DB_HOST') ?? 'localhost',
+            port: parseInt(config.get<string>('DB_PORT') ?? '5432'),
+            username: config.get<string>('DB_USER') ?? 'erp_user',
+            password: config.get<string>('DB_PASSWORD') ?? 'erp_pass',
+            database: config.get<string>('DB_NAME') ?? 'erp_db',
             autoLoadEntities: true,
             synchronize,
             migrations: ['dist/database/migrations/*.js'],
             migrationsRun: isProduction,
-            // CORRIGIDO: Força o TypeORM a tentar reconectar caso o banco demore para subir no Kubernetes
-            retryAttempts: 10,
-            retryDelay: 3000,
-            keepConnectionAlive: true,
           };
         }
+
+        // CORREÇÃO DEFINITIVA PARA SQLITE:
+        // Força synchronize=true no desenvolvimento local para criar as tabelas estruturais automaticamente
         return {
           type: 'sqlite' as const,
           database: config.get<string>('DB_PATH') ?? 'erp.db',
           autoLoadEntities: true,
-          synchronize,
+          synchronize: !isProduction ? true : false, 
           migrations: ['dist/database/migrations/*.js'],
           migrationsRun: isProduction,
         };
