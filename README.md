@@ -133,7 +133,7 @@ SELECT * FROM users;
 ```
 
 #### 🔄 Executar a aplicação Desenvolvimento Local (SQLite)
-- Para trocar a plataforma de Docker para Desenvolvimento Local
+Para trocar a plataforma de Docker para Desenvolvimento Local
 - Passo 1: Necessário alterar propriedades entity do Postgres **timestamp** para SQLite **datetime**
 - Passo 2: arquivo **.env** Frontend e Backend , comentando a conexão Postgres.
 - Passo 3: caminho backend arquivo **next.config.ts**
