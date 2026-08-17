@@ -135,9 +135,9 @@ SELECT * FROM users;
 #### 🔄 Executar a aplicação Desenvolvimento Local (SQLite)
 Para trocar a plataforma de Docker para Desenvolvimento Local
 - Passo 1: Necessário alterar propriedades entity do Postgres **timestamp** para SQLite **datetime**
-- Passo 2: arquivo **.env** Frontend e Backend , comentando a conexão Postgres.
-- Passo 3: caminho backend arquivo **next.config.ts**
-- Passo 4: pasta **.next** do Frontend e pasta **dist** do Backend para serem recriadas.
+- Passo 2: Alterar arquivo **.env** Frontend e Backend , comentando a conexão Postgres e alterando o Frontend para localhost.
+- Passo 3: Alterar o caminho backend no arquivo **next.config.ts**
+- Passo 4: Excluir pasta **.next** do Frontend e pasta **dist** do Backend para serem recriadas.
 
 #### 📁 Backend
 VSCode Terminal [1]
